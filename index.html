@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Control de Gastos Personales</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="estilo.css" />
+</head>
+<body>
+  <header class="main-header">
+    <h1>Control de Gastos Personales</h1>
+    <nav class="main-nav">
+      <button data-view="dashboard" class="nav-btn active">Dashboard</button>
+      <button data-view="nuevo" class="nav-btn">Nuevo movimiento</button>
+      <button data-view="historial" class="nav-btn">Historial</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- VISTA DASHBOARD -->
+    <section id="view-dashboard" class="view active">
+      <h2>Resumen general</h2>
+      <div class="cards">
+        <div class="card card-ingresos">
+          <h3>Ingresos</h3>
+          <p id="total-ingresos">S/ 0.00</p>
+        </div>
+        <div class="card card-gastos">
+          <h3>Gastos</h3>
+          <p id="total-gastos">S/ 0.00</p>
+        </div>
+        <div class="card card-saldo">
+          <h3>Saldo</h3>
+          <p id="saldo">S/ 0.00</p>
+        </div>
+      </div>
+
+      <h3>Últimos movimientos</h3>
+      <table class="tabla-movimientos">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Tipo</th>
+            <th>Categoría</th>
+            <th>Descripción</th>
+            <th>Monto (S/)</th>
+          </tr>
+        </thead>
+        <tbody id="tbody-ultimos">
+          <!-- Se rellena con JS -->
+        </tbody>
+      </table>
+    </section>
+
+    <!-- VISTA NUEVO MOVIMIENTO -->
+    <section id="view-nuevo" class="view">
+      <h2>Registrar nuevo movimiento</h2>
+      <form id="form-movimiento" class="form">
+        <div class="form-group">
+          <label for="tipo">Tipo</label>
+          <select id="tipo" required>
+            <option value="">Seleccione...</option>
+            <option value="ingreso">Ingreso</option>
+            <option value="gasto">Gasto</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="monto">Monto (S/)</label>
+          <input type="number" id="monto" min="0.01" step="0.01" required />
+        </div>
+
+        <div class="form-group">
+          <label for="categoria">Categoría</label>
+          <select id="categoria" required>
+            <option value="">Seleccione...</option>
+            <option value="Alimentación">Alimentación</option>
+            <option value="Transporte">Transporte</option>
+            <option value="Vivienda">Vivienda</option>
+            <option value="Servicios">Servicios</option>
+            <option value="Ocio">Ocio</option>
+            <option value="Salud">Salud</option>
+            <option value="Ingresos varios">Ingresos varios</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="descripcion">Descripción</label>
+          <input type="text" id="descripcion" maxlength="100" />
+        </div>
+
+        <div class="form-group">
+          <label for="fecha">Fecha</label>
+          <input type="date" id="fecha" required />
+        </div>
+
+        <button type="submit" class="btn-primario">Guardar movimiento</button>
+        <p id="mensaje-form" class="mensaje"></p>
+      </form>
+    </section>
+
+    <!-- VISTA HISTORIAL -->
+    <section id="view-historial" class="view">
+      <h2>Historial de movimientos</h2>
+
+      <div class="filtros">
+        <label>
+          Tipo:
+          <select id="filtro-tipo">
+            <option value="todos">Todos</option>
+            <option value="ingreso">Ingresos</option>
+            <option value="gasto">Gastos</option>
+          </select>
+        </label>
+
+        <label>
+          Categoría:
+          <select id="filtro-categoria">
+            <option value="todas">Todas</option>
+            <option value="Alimentación">Alimentación</option>
+            <option value="Transporte">Transporte</option>
+            <option value="Vivienda">Vivienda</option>
+            <option value="Servicios">Servicios</option>
+            <option value="Ocio">Ocio</option>
+            <option value="Salud">Salud</option>
+            <option value="Ingresos varios">Ingresos varios</option>
+          </select>
+        </label>
+      </div>
+
+      <table class="tabla-movimientos">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Tipo</th>
+            <th>Categoría</th>
+            <th>Descripción</th>
+            <th>Monto (S/)</th>
+          </tr>
+        </thead>
+        <tbody id="tbody-historial">
+          <!-- Se rellena con JS -->
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer class="main-footer">
+    <small>Proyecto: Control de Gastos Personales - Desarrollo de Entornos Web 2025</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
